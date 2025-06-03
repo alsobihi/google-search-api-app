@@ -80,7 +80,7 @@ Before you begin, ensure you have the following installed:
 
 \`\`\`bash
 # 1. Clone the repository
-git clone https://github.com/yourusername/google-search-api-app.git
+git clone https://github.com/alsobihi//google-search-api-app.git
 cd google-search-api-app
 
 # 2. Run automated setup
@@ -104,7 +104,7 @@ python scripts/scheduler.py
 
 ### Step 1: Clone Repository
 \`\`\`bash
-git clone https://github.com/yourusername/google-search-api-app.git
+git clone https://github.com/alsobih/google-search-api-app.git
 cd google-search-api-app
 \`\`\`
 
@@ -602,7 +602,7 @@ We welcome contributions! Here's how you can help:
 
 1. **Fork the repository**
    \`\`\`bash
-   git fork https://github.com/yourusername/google-search-api-app.git
+   git fork https://github.com/alsobihi/google-search-api-app.git
    \`\`\`
 
 2. **Create a feature branch**
@@ -678,8 +678,8 @@ copies or substantial portions of the Software.
 ### Getting Help
 
 - 📖 **Documentation**: Check this README and inline code comments
-- 🐛 **Issues**: [Open an issue](https://github.com/yourusername/google-search-api-app/issues) for bugs or feature requests
-- 💬 **Discussions**: [Join discussions](https://github.com/yourusername/google-search-api-app/discussions) for questions and ideas
+- 🐛 **Issues**: [Open an issue](https://github.com/alsobihi/google-search-api-app/issues) for bugs or feature requests
+- 💬 **Discussions**: [Join discussions](https://github.com/alsobihi/google-search-api-app/discussions) for questions and ideas
 - 📧 **Email**: Contact the maintainers directly
 
 ### Diagnostic Tools
