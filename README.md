@@ -165,7 +165,7 @@ nano .env  # or use your preferred editor
 mysql -u root -p < scripts/01_create_database.sql
 ```
 
-```
+
 
 ### Step 5: Validation
 
@@ -190,7 +190,7 @@ python scripts/setup.py --test
 
 </details>
 
----
+
 
 ## 🔑 Getting API Credentials
 
@@ -253,7 +253,7 @@ python scripts/setup.py --check
 python scripts/setup.py --help
 ```
 
-```
+
 
 ### Application Interface
 
@@ -284,7 +284,7 @@ The application provides a comprehensive menu-driven interface:
    python scripts/scheduler.py
 ```
 
-   ```
+ 
 
 3. **Configure schedule:**
    - Select option `1` (Start hourly schedule)
@@ -354,7 +354,7 @@ The application provides a comprehensive menu-driven interface:
 
 </details>
 
----
+
 
 ## 🔧 Configuration
 
@@ -362,7 +362,7 @@ The application provides a comprehensive menu-driven interface:
 
 Create a `.env` file in the project root:
 
-```env
+`env`
 # Google API Configuration
 
 ```
@@ -385,7 +385,7 @@ LOG_LEVEL=INFO
 LOG_FILE=google_search_app.log
 ```
 
-```
+
 
 ### Keyword Management
 
@@ -414,7 +414,7 @@ The application comes with data science-focused keywords:
    ```
 
 3. **Programmatic Management:**
-   ```python
+   ```
    # Save current keywords
    save_keywords_to_file(DEFAULT_KEYWORDS, "backup_keywords.txt")
    
@@ -424,7 +424,7 @@ The application comes with data science-focused keywords:
 
 </details>
 
----
+
 
 ## 💰 Cost Management
 
@@ -458,7 +458,7 @@ The application includes automatic safeguards:
 
 ### Tables Overview
 
-```sql
+```
 -- API request tracking
 CREATE TABLE api_requests (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -534,7 +534,7 @@ LIMIT 10;
 
 </details>
 
----
+
 
 ## 🐛 Troubleshooting
 
@@ -548,6 +548,7 @@ python scripts/setup.py --check
 python scripts/setup.py --validate
 
 # Run application tests
+```
 python scripts/setup.py --test
 ```
 
@@ -562,7 +563,7 @@ ModuleNotFoundError: No module named 'schedule'
 ```
 
 **Solution:**
-
+```
 python scripts/setup.py --install
 ```
 
@@ -643,7 +644,6 @@ mysql -u root -p google_search_app
 curl "https://www.googleapis.com/customsearch/v1?key=YOUR_API_KEY&cx=YOUR_ENGINE_ID&q=test"
 ```
 
-```
 
 ---
 
@@ -675,12 +675,12 @@ We welcome contributions! Here's how you can help:
 ### Getting Started
 
 1. **Fork the repository**
-   
+   ```
    git fork https://github.com/alsobihi/google-search-api-app.git
    ```
 
 2. **Create a feature branch**
-   
+   ```
    git checkout -b feature/amazing-feature
    ```
 
@@ -690,7 +690,7 @@ We welcome contributions! Here's how you can help:
    - Update documentation as needed
 
 4. **Test your changes**
-   
+   ```
    python scripts/setup.py --test
    ```
 
@@ -766,6 +766,7 @@ python scripts/setup.py --check
 python scripts/setup.py --validate
 
 # Run all tests
+```
 python scripts/setup.py --test
 ```
 
