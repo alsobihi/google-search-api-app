@@ -111,7 +111,7 @@ python scripts/setup.py --validate
 python scripts/scheduler.py
 ```
 
-```
+
 
 <details>
 <summary><b>📖 Detailed Installation Steps</b></summary>
@@ -126,7 +126,7 @@ cd google-search-api-app
 ```
 
 ### Step 2: Install Dependencies
-```bash
+
 # Option A: Automatic installation
 
 ```
@@ -142,7 +142,7 @@ pip install mysql-connector-python requests python-dotenv schedule
 ```
 
 ### Step 3: Configure Environment
-```bash
+
 # Create configuration file
 
 ```
@@ -154,7 +154,7 @@ nano .env  # or use your preferred editor
 ```
 
 ### Step 4: Database Setup
-```bash
+
 # Start MySQL server
 # For XAMPP: Start Apache and MySQL from control panel
 # For standalone MySQL: service mysql start
@@ -168,7 +168,7 @@ mysql -u root -p < scripts/01_create_database.sql
 ```
 
 ### Step 5: Validation
-```bash
+
 # Check setup status
 ```
 python scripts/setup.py --check
@@ -234,7 +234,7 @@ GOOGLE_SEARCH_ENGINE_ID=your_search_engine_id_here
 
 ### Quick Start Commands
 
-```bash
+
 # Start the main application
 
 ```
@@ -279,7 +279,7 @@ The application provides a comprehensive menu-driven interface:
 <summary><b>🔄 Setting Up Automated Searches</b></summary>
 
 1. **Start the application:**
-   ```bash
+   
 ```
    python scripts/scheduler.py
 ```
@@ -405,7 +405,7 @@ The application comes with data science-focused keywords:
    - Enter new keywords (one per line)
 
 2. **Via File Import:**
-   ```bash
+   
    # Create keywords file
    echo -e "artificial intelligence\nmachine learning\ndeep learning" > keywords.txt
    
@@ -540,7 +540,7 @@ LIMIT 10;
 
 ### Quick Diagnosis
 
-```bash
+
 # Check setup status
 python scripts/setup.py --check
 
@@ -562,7 +562,7 @@ ModuleNotFoundError: No module named 'schedule'
 ```
 
 **Solution:**
-```bash
+
 python scripts/setup.py --install
 ```
 
@@ -618,7 +618,7 @@ Daily API request limit exceeded
 
 ### Debug Commands
 
-```bash
+
 # View application logs
 
 ```
@@ -675,12 +675,12 @@ We welcome contributions! Here's how you can help:
 ### Getting Started
 
 1. **Fork the repository**
-   ```bash
+   
    git fork https://github.com/alsobihi/google-search-api-app.git
    ```
 
 2. **Create a feature branch**
-   ```bash
+   
    git checkout -b feature/amazing-feature
    ```
 
@@ -690,12 +690,12 @@ We welcome contributions! Here's how you can help:
    - Update documentation as needed
 
 4. **Test your changes**
-   ```bash
+   
    python scripts/setup.py --test
    ```
 
 5. **Commit and push**
-   ```bash
+   
    git commit -m 'Add amazing feature'
    git push origin feature/amazing-feature
    ```
@@ -758,7 +758,7 @@ copies or substantial portions of the Software.
 
 ### Diagnostic Tools
 
-```bash
+
 # Quick health check
 python scripts/setup.py --check
 
