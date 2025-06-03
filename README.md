@@ -7,8 +7,8 @@
 [![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://www.python.org/downloads/)
 [![MySQL](https://img.shields.io/badge/MySQL-8.0+-orange.svg)](https://www.mysql.com/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![GitHub Issues](https://img.shields.io/github/issues/yourusername/google-search-api-app.svg)](https://github.com/yourusername/google-search-api-app/issues)
-[![GitHub Stars](https://img.shields.io/github/stars/yourusername/google-search-api-app.svg)](https://github.com/yourusername/google-search-api-app/stargazers)
+[![GitHub Issues](https://img.shields.io/github/issues/alsobihi/google-search-api-app.svg)](https://github.com/alsobihi/google-search-api-app/issues)
+[![GitHub Stars](https://img.shields.io/github/stars/alsobihi/google-search-api-app.svg)](https://github.com/alsobihi/google-search-api-app/stargazers)
 
 [Features](#-features) • [Installation](#️-installation) • [Usage](#-usage) • [Documentation](#-documentation) • [Contributing](#-contributing)
 
