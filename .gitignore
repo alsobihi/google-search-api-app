@@ -1,0 +1,76 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.env
+.venv
+env.bak/
+venv.bak/
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Application specific
+*.log
+google_search_app.log
+scheduler.log
+*.db
+*.sqlite
+*.sqlite3
+
+# Environment and credentials
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+*.pem
+credentials.json
+client_secret.json
+
+# Database dumps and backups
+# Allow schema files but ignore dumps and backups
+*_dump.sql
+*_backup.sql
+backup_*.sql
+dump_*.sql
+*.dump
+*.backup
+*.bak
+
+# Temporary files
+*.tmp
+temp/
+tmp/
+
+# Generated files
+search_keywords.txt
+output/
+results/
