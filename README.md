@@ -695,7 +695,7 @@ We welcome contributions! Here's how you can help:
    ```
 
 5. **Commit and push**
-   
+   ```
    git commit -m 'Add amazing feature'
    git push origin feature/amazing-feature
    ```
