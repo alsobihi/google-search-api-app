@@ -139,7 +139,7 @@ python scripts/setup.py --install
 pip install mysql-connector-python requests python-dotenv schedule
 ```
 
-```
+
 
 ### Step 3: Configure Environment
 
@@ -151,7 +151,7 @@ python scripts/setup.py --create-env
 
 # Edit .env file with your credentials
 nano .env  # or use your preferred editor
-```
+
 
 ### Step 4: Database Setup
 
@@ -186,7 +186,7 @@ python scripts/setup.py --validate
 python scripts/setup.py --test
 ```
 
-```
+
 
 </details>
 
@@ -217,18 +217,18 @@ python scripts/setup.py --test
 
 #### 3. Configure Application
 Add your credentials to the `.env` file:
-```env
+`env`
 
 ```
 GOOGLE_API_KEY=your_actual_api_key_here
 GOOGLE_SEARCH_ENGINE_ID=your_search_engine_id_here
 ```
 
-```
+
 
 </details>
 
----
+
 
 ## 🚀 Usage
 
