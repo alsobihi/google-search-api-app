@@ -80,47 +80,73 @@ Before you begin, ensure you have the following installed:
 
 \`\`\`bash
 # 1. Clone the repository
+```
 git clone https://github.com/alsobihi//google-search-api-app.git
-cd google-search-api-app
+```
 
+```
+cd google-search-api-app
+```
 # 2. Run automated setup
+```
 python scripts/setup.py
+```
 
 # 3. Configure credentials (edit the generated .env file)
 # Add your Google API key and Search Engine ID
 
 # 4. Set up database
+
+```
 mysql -u root -p < scripts/01_create_database.sql
+```
 
 # 5. Validate setup
+```
 python scripts/setup.py --validate
+```
 
 # 6. Start the application
+```
 python scripts/scheduler.py
+```
+
 \`\`\`
 
 <details>
 <summary><b>📖 Detailed Installation Steps</b></summary>
 
 ### Step 1: Clone Repository
-\`\`\`bash
+```
 git clone https://github.com/alsobih/google-search-api-app.git
+```
+
+```
 cd google-search-api-app
-\`\`\`
+```
 
 ### Step 2: Install Dependencies
 \`\`\`bash
 # Option A: Automatic installation
-python scripts/setup.py --install
 
+```
+python scripts/setup.py --install
+```
 # Option B: Manual installation
+
+```
 pip install mysql-connector-python requests python-dotenv schedule
+```
+
 \`\`\`
 
 ### Step 3: Configure Environment
 \`\`\`bash
 # Create configuration file
+
+```
 python scripts/setup.py --create-env
+```
 
 # Edit .env file with your credentials
 nano .env  # or use your preferred editor
@@ -133,19 +159,32 @@ nano .env  # or use your preferred editor
 # For standalone MySQL: service mysql start
 
 # Create database and tables
+
+```
 mysql -u root -p < scripts/01_create_database.sql
+```
+
 \`\`\`
 
 ### Step 5: Validation
 \`\`\`bash
 # Check setup status
+```
 python scripts/setup.py --check
+```
 
 # Validate configuration
+
+```
 python scripts/setup.py --validate
+```
 
 # Run tests
+
+```
 python scripts/setup.py --test
+```
+
 \`\`\`
 
 </details>
@@ -178,8 +217,12 @@ python scripts/setup.py --test
 #### 3. Configure Application
 Add your credentials to the `.env` file:
 \`\`\`env
+
+```
 GOOGLE_API_KEY=your_actual_api_key_here
 GOOGLE_SEARCH_ENGINE_ID=your_search_engine_id_here
+```
+
 \`\`\`
 
 </details>
@@ -192,13 +235,23 @@ GOOGLE_SEARCH_ENGINE_ID=your_search_engine_id_here
 
 \`\`\`bash
 # Start the main application
+
+```
 python scripts/scheduler.py
+```
 
 # Check setup status
+
+```
 python scripts/setup.py --check
+```
 
 # View help
+
+```
 python scripts/setup.py --help
+```
+
 \`\`\`
 
 ### Application Interface
@@ -226,16 +279,19 @@ The application provides a comprehensive menu-driven interface:
 
 1. **Start the application:**
    \`\`\`bash
+```
    python scripts/scheduler.py
+```
+
    \`\`\`
 
-2. **Configure schedule:**
+3. **Configure schedule:**
    - Select option `1` (Start hourly schedule)
    - Set frequency: `24` hours
    - Results per keyword: `50`
    - Duration: `7` days
 
-3. **Review configuration:**
+4. **Review configuration:**
    \`\`\`
    📊 DETAILED SCHEDULE SUMMARY
    ============================================================
@@ -254,7 +310,7 @@ The application provides a comprehensive menu-driven interface:
    💰 Free Tier Status: ✅ Stays within free tier
    \`\`\`
 
-4. **Confirm and start:**
+5. **Confirm and start:**
    - Review the summary
    - Confirm to start the scheduler
    - Monitor progress in real-time
@@ -307,6 +363,8 @@ Create a `.env` file in the project root:
 
 \`\`\`env
 # Google API Configuration
+
+```
 GOOGLE_API_KEY=your_google_api_key_here
 GOOGLE_SEARCH_ENGINE_ID=your_search_engine_id_here
 
@@ -325,6 +383,8 @@ DEFAULT_RESULTS_PER_QUERY=10
 LOG_LEVEL=INFO
 LOG_FILE=google_search_app.log
 \`\`\`
+
+```
 
 ### Keyword Management
 
