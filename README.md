@@ -78,7 +78,7 @@ Before you begin, ensure you have the following installed:
 
 ### Quick Start (Recommended)
 
-```bash
+
 # 1. Clone the repository
 ```
 git clone https://github.com/alsobihi//google-search-api-app.git
@@ -132,6 +132,7 @@ cd google-search-api-app
 ```
 python scripts/setup.py --install
 ```
+
 # Option B: Manual installation
 
 ```
