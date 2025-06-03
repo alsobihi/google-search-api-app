@@ -78,7 +78,7 @@ Before you begin, ensure you have the following installed:
 
 ### Quick Start (Recommended)
 
-\`\`\`bash
+```bash
 # 1. Clone the repository
 ```
 git clone https://github.com/alsobihi//google-search-api-app.git
@@ -111,7 +111,7 @@ python scripts/setup.py --validate
 python scripts/scheduler.py
 ```
 
-\`\`\`
+```
 
 <details>
 <summary><b>📖 Detailed Installation Steps</b></summary>
@@ -126,7 +126,7 @@ cd google-search-api-app
 ```
 
 ### Step 2: Install Dependencies
-\`\`\`bash
+```bash
 # Option A: Automatic installation
 
 ```
@@ -138,10 +138,10 @@ python scripts/setup.py --install
 pip install mysql-connector-python requests python-dotenv schedule
 ```
 
-\`\`\`
+```
 
 ### Step 3: Configure Environment
-\`\`\`bash
+```bash
 # Create configuration file
 
 ```
@@ -150,10 +150,10 @@ python scripts/setup.py --create-env
 
 # Edit .env file with your credentials
 nano .env  # or use your preferred editor
-\`\`\`
+```
 
 ### Step 4: Database Setup
-\`\`\`bash
+```bash
 # Start MySQL server
 # For XAMPP: Start Apache and MySQL from control panel
 # For standalone MySQL: service mysql start
@@ -164,10 +164,10 @@ nano .env  # or use your preferred editor
 mysql -u root -p < scripts/01_create_database.sql
 ```
 
-\`\`\`
+```
 
 ### Step 5: Validation
-\`\`\`bash
+```bash
 # Check setup status
 ```
 python scripts/setup.py --check
@@ -185,7 +185,7 @@ python scripts/setup.py --validate
 python scripts/setup.py --test
 ```
 
-\`\`\`
+```
 
 </details>
 
@@ -216,14 +216,14 @@ python scripts/setup.py --test
 
 #### 3. Configure Application
 Add your credentials to the `.env` file:
-\`\`\`env
+```env
 
 ```
 GOOGLE_API_KEY=your_actual_api_key_here
 GOOGLE_SEARCH_ENGINE_ID=your_search_engine_id_here
 ```
 
-\`\`\`
+```
 
 </details>
 
@@ -233,7 +233,7 @@ GOOGLE_SEARCH_ENGINE_ID=your_search_engine_id_here
 
 ### Quick Start Commands
 
-\`\`\`bash
+```bash
 # Start the main application
 
 ```
@@ -252,13 +252,13 @@ python scripts/setup.py --check
 python scripts/setup.py --help
 ```
 
-\`\`\`
+```
 
 ### Application Interface
 
 The application provides a comprehensive menu-driven interface:
 
-\`\`\`
+```
 📋 Main Menu:
 1. Start hourly schedule        # Automated scheduling
 2. Check scheduler status       # Monitor schedules  
@@ -270,7 +270,7 @@ The application provides a comprehensive menu-driven interface:
 8. View recent searches       # Browse history
 9. Run one-time bulk search   # Immediate bulk search
 0. Exit                       # Close application
-\`\`\`
+```
 
 ### Example Workflows
 
@@ -278,12 +278,12 @@ The application provides a comprehensive menu-driven interface:
 <summary><b>🔄 Setting Up Automated Searches</b></summary>
 
 1. **Start the application:**
-   \`\`\`bash
+   ```bash
 ```
    python scripts/scheduler.py
 ```
 
-   \`\`\`
+   ```
 
 3. **Configure schedule:**
    - Select option `1` (Start hourly schedule)
@@ -292,7 +292,7 @@ The application provides a comprehensive menu-driven interface:
    - Duration: `7` days
 
 4. **Review configuration:**
-   \`\`\`
+   ```
    📊 DETAILED SCHEDULE SUMMARY
    ============================================================
    📅 Schedule Configuration:
@@ -308,7 +308,7 @@ The application provides a comprehensive menu-driven interface:
    Total API calls per day: 45
 
    💰 Free Tier Status: ✅ Stays within free tier
-   \`\`\`
+   ```
 
 5. **Confirm and start:**
    - Review the summary
@@ -324,7 +324,7 @@ The application provides a comprehensive menu-driven interface:
    - Select option `7` from main menu
 
 2. **Perform search:**
-   \`\`\`
+   ```
    🔍 Interactive Search
    Enter a search query: machine learning algorithms
    Number of results (default 10): 20
@@ -342,14 +342,14 @@ The application provides a comprehensive menu-driven interface:
    1. Introduction to Machine Learning Algorithms
       🔗 https://example.com/ml-intro
       📝 A comprehensive guide to machine learning algorithms...
-   \`\`\`
+   ```
 
 3. **View updated statistics:**
-   \`\`\`
+   ```
    📈 Updated API Usage:
    Used Today: 12/50
    Remaining: 38
-   \`\`\`
+   ```
 
 </details>
 
@@ -361,7 +361,7 @@ The application provides a comprehensive menu-driven interface:
 
 Create a `.env` file in the project root:
 
-\`\`\`env
+```env
 # Google API Configuration
 
 ```
@@ -382,7 +382,7 @@ DEFAULT_RESULTS_PER_QUERY=10
 # Logging Configuration
 LOG_LEVEL=INFO
 LOG_FILE=google_search_app.log
-\`\`\`
+```
 
 ```
 
@@ -404,22 +404,22 @@ The application comes with data science-focused keywords:
    - Enter new keywords (one per line)
 
 2. **Via File Import:**
-   \`\`\`bash
+   ```bash
    # Create keywords file
    echo -e "artificial intelligence\nmachine learning\ndeep learning" > keywords.txt
    
    # Import via application menu
    # Select option 5 → Load keywords from file
-   \`\`\`
+   ```
 
 3. **Programmatic Management:**
-   \`\`\`python
+   ```python
    # Save current keywords
    save_keywords_to_file(DEFAULT_KEYWORDS, "backup_keywords.txt")
    
    # Load keywords from file
    new_keywords = load_keywords_from_file("custom_keywords.txt")
-   \`\`\`
+   ```
 
 </details>
 
@@ -436,12 +436,12 @@ The application comes with data science-focused keywords:
 
 ### Cost Examples
 
-\`\`\`
+```
 📊 Cost Projections:
 • 200 searches/day: $0.50/day, $15.00/month
 • 500 searches/day: $2.00/day, $60.00/month  
 • 1000 searches/day: $4.50/day, $135.00/month
-\`\`\`
+```
 
 ### Free Tier Protection
 
@@ -457,7 +457,7 @@ The application includes automatic safeguards:
 
 ### Tables Overview
 
-\`\`\`sql
+```sql
 -- API request tracking
 CREATE TABLE api_requests (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -484,14 +484,14 @@ CREATE TABLE daily_usage (
     usage_date DATE NOT NULL UNIQUE,
     request_count INT DEFAULT 0
 );
-\`\`\`
+```
 
 ### Data Analysis Examples
 
 <details>
 <summary><b>📈 SQL Query Examples</b></summary>
 
-\`\`\`sql
+```sql
 -- View recent searches
 SELECT query_text, status, created_at 
 FROM api_requests 
@@ -529,7 +529,7 @@ WHERE status = 'success'
 GROUP BY query_text 
 ORDER BY search_count DESC 
 LIMIT 10;
-\`\`\`
+```
 
 </details>
 
@@ -539,7 +539,7 @@ LIMIT 10;
 
 ### Quick Diagnosis
 
-\`\`\`bash
+```bash
 # Check setup status
 python scripts/setup.py --check
 
@@ -548,7 +548,7 @@ python scripts/setup.py --validate
 
 # Run application tests
 python scripts/setup.py --test
-\`\`\`
+```
 
 ### Common Issues
 
@@ -556,14 +556,14 @@ python scripts/setup.py --test
 <summary><b>❌ Missing Dependencies</b></summary>
 
 **Error:**
-\`\`\`
+```
 ModuleNotFoundError: No module named 'schedule'
-\`\`\`
+```
 
 **Solution:**
-\`\`\`bash
+```bash
 python scripts/setup.py --install
-\`\`\`
+```
 
 </details>
 
@@ -571,9 +571,9 @@ python scripts/setup.py --install
 <summary><b>❌ API Configuration Issues</b></summary>
 
 **Error:**
-\`\`\`
+```
 Google API key and Search Engine ID must be provided
-\`\`\`
+```
 
 **Solutions:**
 1. Check `.env` file exists and contains credentials
@@ -587,9 +587,9 @@ Google API key and Search Engine ID must be provided
 <summary><b>❌ Database Connection Issues</b></summary>
 
 **Error:**
-\`\`\`
+```
 Database connection failed
-\`\`\`
+```
 
 **Solutions:**
 1. Ensure MySQL server is running
@@ -603,9 +603,9 @@ Database connection failed
 <summary><b>❌ Rate Limit Issues</b></summary>
 
 **Error:**
-\`\`\`
+```
 Daily API request limit exceeded
-\`\`\`
+```
 
 **Solutions:**
 1. Wait for daily reset (midnight UTC)
@@ -617,25 +617,38 @@ Daily API request limit exceeded
 
 ### Debug Commands
 
-\`\`\`bash
+```bash
 # View application logs
+
+```
 tail -f google_search_app.log
+```
 
 # View scheduler logs  
+
+```
 tail -f scheduler.log
+```
 
 # Check MySQL connection
+
+```
 mysql -u root -p google_search_app
+```
 
 # Test API connectivity
+
+```
 curl "https://www.googleapis.com/customsearch/v1?key=YOUR_API_KEY&cx=YOUR_ENGINE_ID&q=test"
-\`\`\`
+```
+
+```
 
 ---
 
 ## 📁 Project Structure
 
-\`\`\`
+```
 google-search-api-app/
 ├── 📁 scripts/
 │   ├── 📄 01_create_database.sql      # Database schema
@@ -650,7 +663,7 @@ google-search-api-app/
 ├── 📄 LICENSE                         # MIT License
 ├── 📄 google_search_app.log           # Application logs
 └── 📄 scheduler.log                   # Scheduler logs
-\`\`\`
+```
 
 ---
 
@@ -661,14 +674,14 @@ We welcome contributions! Here's how you can help:
 ### Getting Started
 
 1. **Fork the repository**
-   \`\`\`bash
+   ```bash
    git fork https://github.com/alsobihi/google-search-api-app.git
-   \`\`\`
+   ```
 
 2. **Create a feature branch**
-   \`\`\`bash
+   ```bash
    git checkout -b feature/amazing-feature
-   \`\`\`
+   ```
 
 3. **Make your changes**
    - Follow the existing code style
@@ -676,15 +689,15 @@ We welcome contributions! Here's how you can help:
    - Update documentation as needed
 
 4. **Test your changes**
-   \`\`\`bash
+   ```bash
    python scripts/setup.py --test
-   \`\`\`
+   ```
 
 5. **Commit and push**
-   \`\`\`bash
+   ```bash
    git commit -m 'Add amazing feature'
    git push origin feature/amazing-feature
-   \`\`\`
+   ```
 
 6. **Open a Pull Request**
 
@@ -715,7 +728,7 @@ We welcome contributions! Here's how you can help:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-\`\`\`
+```
 MIT License
 
 Copyright (c) 2024 Google Search API Application
@@ -729,7 +742,7 @@ furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
-\`\`\`
+```
 
 ---
 
@@ -744,7 +757,7 @@ copies or substantial portions of the Software.
 
 ### Diagnostic Tools
 
-\`\`\`bash
+```bash
 # Quick health check
 python scripts/setup.py --check
 
@@ -753,7 +766,7 @@ python scripts/setup.py --validate
 
 # Run all tests
 python scripts/setup.py --test
-\`\`\`
+```
 
 ---
 
