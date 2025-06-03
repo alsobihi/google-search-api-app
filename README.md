@@ -1,244 +1,142 @@
-# Google Search API Application
+<div align="center">
 
-A streamlined Python application for automated Google search data collection with MySQL database integration and intelligent scheduling capabilities.
+# 🔍 Google Search API Application
+
+**A powerful Python application for automated Google search data collection with MySQL database integration and intelligent scheduling capabilities.**
+
+[![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://www.python.org/downloads/)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0+-orange.svg)](https://www.mysql.com/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![GitHub Issues](https://img.shields.io/github/issues/yourusername/google-search-api-app.svg)](https://github.com/yourusername/google-search-api-app/issues)
+[![GitHub Stars](https://img.shields.io/github/stars/yourusername/google-search-api-app.svg)](https://github.com/yourusername/google-search-api-app/stargazers)
+
+[Features](#-features) • [Installation](#️-installation) • [Usage](#-usage) • [Documentation](#-documentation) • [Contributing](#-contributing)
+
+</div>
+
+---
 
 ## 🚀 Features
 
-- **Automated Scheduling**: Schedule searches to run at specified intervals
-- **Interactive Search**: Perform individual searches with detailed results
-- **Database Integration**: Store search results in MySQL with detailed metadata
-- **Rate Limiting**: Built-in protection for Google API free tier limits
-- **Keyword Management**: Flexible keyword management with file import/export
-- **Real-time Monitoring**: Track API usage, costs, and search statistics
-- **Free Tier Protection**: Automatic safeguards to prevent exceeding free API limits
-- **Comprehensive Logging**: Detailed logs for monitoring and debugging
+<table>
+<tr>
+<td width="50%">
+
+### 🤖 **Automation**
+- **Scheduled Searches**: Run searches at specified intervals
+- **Bulk Processing**: Handle multiple keywords efficiently
+- **Free Tier Protection**: Automatic cost safeguards
+- **Smart Rate Limiting**: Respect API quotas
+
+</td>
+<td width="50%">
+
+### 🔍 **Search Capabilities**
+- **Interactive Search**: Real-time individual queries
+- **Keyword Management**: Import/export keyword lists
+- **Result Storage**: MySQL database integration
+- **Search History**: Browse and analyze past searches
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 📊 **Monitoring**
+- **Real-time Statistics**: API usage tracking
+- **Cost Projections**: Estimate expenses
+- **Success Metrics**: Monitor search performance
+- **Comprehensive Logging**: Detailed operation logs
+
+</td>
+<td width="50%">
+
+### ⚙️ **Configuration**
+- **Easy Setup**: One-command installation
+- **Flexible Settings**: Customizable parameters
+- **Environment Management**: Secure credential storage
+- **Database Schema**: Automated table creation
+
+</td>
+</tr>
+</table>
+
+---
 
 ## 📋 Prerequisites
 
-- Python 3.7+
-- MySQL Server (or XAMPP/WAMP)
-- Google Custom Search API Key
-- Google Custom Search Engine ID
+Before you begin, ensure you have the following installed:
 
-## 🛠️ Quick Installation
+- **Python 3.7+** - [Download Python](https://www.python.org/downloads/)
+- **MySQL Server** - [Download MySQL](https://www.mysql.com/downloads/) or use [XAMPP](https://www.apachefriends.org/)
+- **Google Custom Search API Key** - [Get API Key](https://console.cloud.google.com/)
+- **Google Custom Search Engine ID** - [Create Search Engine](https://cse.google.com/)
 
-### 1. Clone the Repository
+---
+
+## 🛠️ Installation
+
+### Quick Start (Recommended)
+
+\`\`\`bash
+# 1. Clone the repository
+git clone https://github.com/yourusername/google-search-api-app.git
+cd google-search-api-app
+
+# 2. Run automated setup
+python scripts/setup.py
+
+# 3. Configure credentials (edit the generated .env file)
+# Add your Google API key and Search Engine ID
+
+# 4. Set up database
+mysql -u root -p < scripts/01_create_database.sql
+
+# 5. Validate setup
+python scripts/setup.py --validate
+
+# 6. Start the application
+python scripts/scheduler.py
+\`\`\`
+
+<details>
+<summary><b>📖 Detailed Installation Steps</b></summary>
+
+### Step 1: Clone Repository
 \`\`\`bash
 git clone https://github.com/yourusername/google-search-api-app.git
 cd google-search-api-app
 \`\`\`
 
-### 2. Run Complete Setup
+### Step 2: Install Dependencies
 \`\`\`bash
-# This will install packages and create configuration files
-python scripts/setup.py
+# Option A: Automatic installation
+python scripts/setup.py --install
+
+# Option B: Manual installation
+pip install mysql-connector-python requests python-dotenv schedule
 \`\`\`
 
-### 3. Configure Your Credentials
-Edit the `.env` file created by setup:
-\`\`\`env
-GOOGLE_API_KEY=your_actual_google_api_key
-GOOGLE_SEARCH_ENGINE_ID=your_actual_search_engine_id
-DB_PASSWORD=your_mysql_password
+### Step 3: Configure Environment
+\`\`\`bash
+# Create configuration file
+python scripts/setup.py --create-env
+
+# Edit .env file with your credentials
+nano .env  # or use your preferred editor
 \`\`\`
 
-### 4. Set Up Database
+### Step 4: Database Setup
 \`\`\`bash
-# Start MySQL server (XAMPP/WAMP or standalone)
+# Start MySQL server
+# For XAMPP: Start Apache and MySQL from control panel
+# For standalone MySQL: service mysql start
+
+# Create database and tables
 mysql -u root -p < scripts/01_create_database.sql
 \`\`\`
 
-### 5. Validate Setup
-\`\`\`bash
-python scripts/setup.py --validate
-\`\`\`
-
-## 🔧 Setup Options
-
-The setup script provides several options:
-
-\`\`\`bash
-python scripts/setup.py --install     # Install required packages only
-python scripts/setup.py --create-env  # Create .env file only
-python scripts/setup.py --validate    # Check if everything is configured
-python scripts/setup.py --test        # Run application tests
-python scripts/setup.py --check       # Check status and get instructions
-python scripts/setup.py --help        # Show all options
-\`\`\`
-
-## 🔑 Getting Google API Credentials
-
-### 1. Google API Key
-1. Go to [Google Cloud Console](https://console.cloud.google.com/)
-2. Create a new project or select existing one
-3. Enable "Custom Search API"
-4. Go to "Credentials" and create an API key
-5. Copy the API key to your `.env` file
-
-### 2. Custom Search Engine ID
-1. Go to [Google Custom Search](https://cse.google.com/)
-2. Click "Add" to create a new search engine
-3. Enter "*" as the site to search (for web-wide search)
-4. Create the search engine
-5. Copy the Search Engine ID to your `.env` file
-
-## 🚀 Usage
-
-### Quick Start
-\`\`\`bash
-# Run the application
-python scripts/scheduler.py
-\`\`\`
-
-## 📊 Application Features
-
-The application provides a comprehensive menu-driven interface:
-
-### Main Menu Options:
-1. **Start hourly schedule** - Set up automated searches
-2. **Check scheduler status** - Monitor running schedules
-3. **Stop scheduler** - Stop active schedules
-4. **View current API usage** - Check quota and costs
-5. **Manage keywords** - Configure search terms
-6. **API settings** - Adjust rate limits and defaults
-7. **Interactive search** - Perform individual searches
-8. **View recent searches** - Browse search history
-9. **Run one-time bulk search** - Execute immediate bulk search
-0. **Exit** - Close the application
-
-### Setting Up a Schedule:
-1. Run `python scripts/scheduler.py`
-2. Select "Start hourly schedule"
-3. Configure:
-- **Frequency**: Every X hours (default: 25)
-- **Results per keyword**: 1-100 (default: 10)
-- **Duration**: Days to run (default: unlimited)
-
-### Example Schedule Configuration:
-\`\`\`
-Run every X hours (default 25): 24
-Results per keyword (default 10): 50
-Maximum days to run (default: unlimited): 7
-
-📊 DETAILED SCHEDULE SUMMARY
-============================================================
-📅 Schedule Configuration:
-Frequency: Every 24 hour(s)
-Results per keyword: 50
-Keywords to search: 9
-Duration: 7 days
-
-🔢 API Call Calculations:
-API calls per keyword: 5 (Google returns max 10 results per call)
-Total API calls per run: 45
-Runs per day: 1.0
-Total API calls per day: 45
-
-💰 Free Tier Status: ✅ Stays within free tier
-\`\`\`
-
-## 🔧 Keyword Management
-
-### Default Keywords
-The application comes with data science-focused keywords:
-- Data Analysis, Data Analytics, Data Analyst
-- Data Mining, Data Modeling, Data Visualization
-- Business Intelligence, Machine Learning, Deep Learning
-
-### Managing Keywords:
-1. **View current keywords**: See active keyword list
-2. **Change default keywords**: Replace with custom terms
-3. **Load from file**: Import keywords from text file
-4. **Save to file**: Export keywords for backup
-
-### Custom Keywords Example:
-\`\`\`
-# In main menu: Manage keywords > Change default keywords
-Enter new keywords (one per line, empty line to finish):
-artificial intelligence
-machine learning
-deep learning
-neural networks
-computer vision
-
-✅ Updated default keywords! Now using 5 keywords
-\`\`\`
-
-## 🔍 Interactive Search
-
-The application includes an interactive search mode for individual queries:
-
-1. Select "Interactive search" from the main menu
-2. Enter your search query
-3. Specify number of results (1-100)
-4. View results immediately in the terminal
-
-### Example Interactive Search:
-\`\`\`
-🔍 Interactive Search
-Enter a search query: machine learning algorithms
-Number of results (default 10): 20
-
-🔍 Searching for: 'machine learning algorithms'
-Requesting 20 results...
-This will use approximately 2 API calls
-
-✅ Got 10 results
-✅ Got 10 results
-
-📊 Search Results for: 'machine learning algorithms'
-Total results found: 20
-
-1. Introduction to Machine Learning Algorithms
-   🔗 https://example.com/ml-intro
-   📝 A comprehensive guide to machine learning algorithms...
-\`\`\`
-
-## 💰 API Cost Management
-
-### Free Tier Limits:
-- **100 searches per day** (Google's free tier)
-- **No cost** for first 100 daily searches
-- **Automatic protection** against exceeding limits
-
-### Paid Tier:
-- **$5.00 per 1,000 queries** ($0.005 per search)
-- **No daily limits**
-- **Cost estimates** shown in application
-
-### Cost Examples:
-- 200 searches/day: $0.50/day, $15/month
-- 500 searches/day: $2.00/day, $60/month
-- 1000 searches/day: $4.50/day, $135/month
-
-## 📈 Monitoring and Analytics
-
-### Real-time Statistics:
-- API usage tracking (daily/remaining)
-- Success/failure rates
-- Cost projections
-- Free tier status
-
-### Database Schema:
-- **api_requests**: Search request logs
-- **search_results**: Detailed search results
-- **daily_usage**: Daily API usage tracking
-
-### Accessing Data:
-\`\`\`sql
--- View recent searches
-SELECT * FROM api_requests ORDER BY created_at DESC LIMIT 10;
-
--- Get search results for a specific query
-SELECT * FROM search_results WHERE request_id = 1;
-
--- Check daily usage
-SELECT * FROM daily_usage ORDER BY usage_date DESC;
-\`\`\`
-
-## 🐛 Troubleshooting
-
-### Quick Diagnosis
+### Step 5: Validation
 \`\`\`bash
 # Check setup status
 python scripts/setup.py --check
@@ -250,120 +148,573 @@ python scripts/setup.py --validate
 python scripts/setup.py --test
 \`\`\`
 
-### Common Issues:
+</details>
 
-#### 1. Missing Dependencies
+---
+
+## 🔑 Getting API Credentials
+
+### Google Custom Search API Setup
+
+<details>
+<summary><b>🔧 Step-by-Step API Configuration</b></summary>
+
+#### 1. Google Cloud Console Setup
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project or select an existing one
+3. Navigate to **APIs & Services** → **Library**
+4. Search for "Custom Search API" and enable it
+5. Go to **APIs & Services** → **Credentials**
+6. Click **Create Credentials** → **API Key**
+7. Copy the generated API key
+
+#### 2. Custom Search Engine Setup
+1. Visit [Google Custom Search](https://cse.google.com/)
+2. Click **Add** to create a new search engine
+3. In "Sites to search", enter `*` (for web-wide search)
+4. Click **Create**
+5. Copy the **Search Engine ID** from the control panel
+
+#### 3. Configure Application
+Add your credentials to the `.env` file:
+\`\`\`env
+GOOGLE_API_KEY=your_actual_api_key_here
+GOOGLE_SEARCH_ENGINE_ID=your_search_engine_id_here
+\`\`\`
+
+</details>
+
+---
+
+## 🚀 Usage
+
+### Quick Start Commands
+
+\`\`\`bash
+# Start the main application
+python scripts/scheduler.py
+
+# Check setup status
+python scripts/setup.py --check
+
+# View help
+python scripts/setup.py --help
+\`\`\`
+
+### Application Interface
+
+The application provides a comprehensive menu-driven interface:
+
+\`\`\`
+📋 Main Menu:
+1. Start hourly schedule        # Automated scheduling
+2. Check scheduler status       # Monitor schedules  
+3. Stop scheduler              # Stop automation
+4. View current API usage      # Check quotas
+5. Manage keywords             # Configure search terms
+6. API settings               # Adjust limits
+7. Interactive search         # Individual searches
+8. View recent searches       # Browse history
+9. Run one-time bulk search   # Immediate bulk search
+0. Exit                       # Close application
+\`\`\`
+
+### Example Workflows
+
+<details>
+<summary><b>🔄 Setting Up Automated Searches</b></summary>
+
+1. **Start the application:**
+   \`\`\`bash
+   python scripts/scheduler.py
+   \`\`\`
+
+2. **Configure schedule:**
+   - Select option `1` (Start hourly schedule)
+   - Set frequency: `24` hours
+   - Results per keyword: `50`
+   - Duration: `7` days
+
+3. **Review configuration:**
+   \`\`\`
+   📊 DETAILED SCHEDULE SUMMARY
+   ============================================================
+   📅 Schedule Configuration:
+   Frequency: Every 24 hour(s)
+   Results per keyword: 50
+   Keywords to search: 9
+   Duration: 7 days
+
+   🔢 API Call Calculations:
+   API calls per keyword: 5 (Google returns max 10 results per call)
+   Total API calls per run: 45
+   Runs per day: 1.0
+   Total API calls per day: 45
+
+   💰 Free Tier Status: ✅ Stays within free tier
+   \`\`\`
+
+4. **Confirm and start:**
+   - Review the summary
+   - Confirm to start the scheduler
+   - Monitor progress in real-time
+
+</details>
+
+<details>
+<summary><b>🔍 Interactive Search Example</b></summary>
+
+1. **Access interactive search:**
+   - Select option `7` from main menu
+
+2. **Perform search:**
+   \`\`\`
+   🔍 Interactive Search
+   Enter a search query: machine learning algorithms
+   Number of results (default 10): 20
+
+   🔍 Searching for: 'machine learning algorithms'
+   Requesting 20 results...
+   This will use approximately 2 API calls
+
+   ✅ Got 10 results
+   ✅ Got 10 results
+
+   📊 Search Results for: 'machine learning algorithms'
+   Total results found: 20
+
+   1. Introduction to Machine Learning Algorithms
+      🔗 https://example.com/ml-intro
+      📝 A comprehensive guide to machine learning algorithms...
+   \`\`\`
+
+3. **View updated statistics:**
+   \`\`\`
+   📈 Updated API Usage:
+   Used Today: 12/50
+   Remaining: 38
+   \`\`\`
+
+</details>
+
+---
+
+## 🔧 Configuration
+
+### Environment Variables
+
+Create a `.env` file in the project root:
+
+\`\`\`env
+# Google API Configuration
+GOOGLE_API_KEY=your_google_api_key_here
+GOOGLE_SEARCH_ENGINE_ID=your_search_engine_id_here
+
+# MySQL Database Configuration
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=your_mysql_password
+DB_NAME=google_search_app
+
+# API Rate Limiting
+MAX_DAILY_REQUESTS=50
+DEFAULT_RESULTS_PER_QUERY=10
+
+# Logging Configuration
+LOG_LEVEL=INFO
+LOG_FILE=google_search_app.log
+\`\`\`
+
+### Keyword Management
+
+<details>
+<summary><b>📝 Managing Search Keywords</b></summary>
+
+#### Default Keywords
+The application comes with data science-focused keywords:
+- Data Analysis, Data Analytics, Data Analyst
+- Data Mining, Data Modeling, Data Visualization
+- Business Intelligence, Machine Learning, Deep Learning
+
+#### Custom Keywords
+1. **Via Application Menu:**
+   - Select option `5` (Manage keywords)
+   - Choose "Change default keywords"
+   - Enter new keywords (one per line)
+
+2. **Via File Import:**
+   \`\`\`bash
+   # Create keywords file
+   echo -e "artificial intelligence\nmachine learning\ndeep learning" > keywords.txt
+   
+   # Import via application menu
+   # Select option 5 → Load keywords from file
+   \`\`\`
+
+3. **Programmatic Management:**
+   \`\`\`python
+   # Save current keywords
+   save_keywords_to_file(DEFAULT_KEYWORDS, "backup_keywords.txt")
+   
+   # Load keywords from file
+   new_keywords = load_keywords_from_file("custom_keywords.txt")
+   \`\`\`
+
+</details>
+
+---
+
+## 💰 Cost Management
+
+### Free Tier Limits
+
+| Tier | Daily Limit | Cost | Features |
+|------|-------------|------|----------|
+| **Free** | 100 searches | $0.00 | Basic usage, automatic protection |
+| **Paid** | Unlimited | $5.00/1000 searches | No daily limits, advanced features |
+
+### Cost Examples
+
+\`\`\`
+📊 Cost Projections:
+• 200 searches/day: $0.50/day, $15.00/month
+• 500 searches/day: $2.00/day, $60.00/month  
+• 1000 searches/day: $4.50/day, $135.00/month
+\`\`\`
+
+### Free Tier Protection
+
+The application includes automatic safeguards:
+- ✅ **Pre-search validation** - Check quotas before execution
+- ✅ **Real-time monitoring** - Track usage during operations
+- ✅ **Cost warnings** - Alert before exceeding free tier
+- ✅ **Emergency stops** - Halt operations if limits approached
+
+---
+
+## 📊 Database Schema
+
+### Tables Overview
+
+\`\`\`sql
+-- API request tracking
+CREATE TABLE api_requests (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    query_text VARCHAR(500) NOT NULL,
+    num_results INT DEFAULT 10,
+    status ENUM('success', 'error', 'rate_limited'),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Search results storage  
+CREATE TABLE search_results (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    request_id INT,
+    title TEXT,
+    link VARCHAR(1000),
+    snippet TEXT,
+    position_in_results INT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Daily usage tracking
+CREATE TABLE daily_usage (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usage_date DATE NOT NULL UNIQUE,
+    request_count INT DEFAULT 0
+);
+\`\`\`
+
+### Data Analysis Examples
+
+<details>
+<summary><b>📈 SQL Query Examples</b></summary>
+
+\`\`\`sql
+-- View recent searches
+SELECT query_text, status, created_at 
+FROM api_requests 
+ORDER BY created_at DESC 
+LIMIT 10;
+
+-- Get search results for a specific query
+SELECT sr.title, sr.link, sr.snippet
+FROM search_results sr
+JOIN api_requests ar ON sr.request_id = ar.id
+WHERE ar.query_text = 'machine learning'
+ORDER BY sr.position_in_results;
+
+-- Daily usage statistics
+SELECT usage_date, request_count
+FROM daily_usage 
+ORDER BY usage_date DESC 
+LIMIT 30;
+
+-- Success rate analysis
+SELECT 
+    status,
+    COUNT(*) as count,
+    ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM api_requests), 2) as percentage
+FROM api_requests 
+GROUP BY status;
+
+-- Top searched keywords
+SELECT 
+    query_text,
+    COUNT(*) as search_count,
+    MAX(created_at) as last_searched
+FROM api_requests 
+WHERE status = 'success'
+GROUP BY query_text 
+ORDER BY search_count DESC 
+LIMIT 10;
+\`\`\`
+
+</details>
+
+---
+
+## 🐛 Troubleshooting
+
+### Quick Diagnosis
+
+\`\`\`bash
+# Check setup status
+python scripts/setup.py --check
+
+# Validate configuration  
+python scripts/setup.py --validate
+
+# Run application tests
+python scripts/setup.py --test
+\`\`\`
+
+### Common Issues
+
+<details>
+<summary><b>❌ Missing Dependencies</b></summary>
+
+**Error:**
 \`\`\`
 ModuleNotFoundError: No module named 'schedule'
 \`\`\`
-**Solution**: Run `python scripts/setup.py --install`
 
-#### 2. API Key Errors
+**Solution:**
+\`\`\`bash
+python scripts/setup.py --install
 \`\`\`
-ValueError: Google API key and Search Engine ID must be provided
-\`\`\`
-**Solution**: Check your `.env` file has correct API credentials
 
-#### 3. Database Connection Errors
+</details>
+
+<details>
+<summary><b>❌ API Configuration Issues</b></summary>
+
+**Error:**
+\`\`\`
+Google API key and Search Engine ID must be provided
+\`\`\`
+
+**Solutions:**
+1. Check `.env` file exists and contains credentials
+2. Verify API key is valid in Google Cloud Console
+3. Ensure Custom Search Engine is properly configured
+4. Run: `python scripts/setup.py --create-env`
+
+</details>
+
+<details>
+<summary><b>❌ Database Connection Issues</b></summary>
+
+**Error:**
 \`\`\`
 Database connection failed
 \`\`\`
-**Solution**: Verify MySQL is running and credentials are correct
 
-#### 4. Rate Limit Exceeded
+**Solutions:**
+1. Ensure MySQL server is running
+2. Check credentials in `.env` file
+3. Verify database exists: `mysql -u root -p -e "SHOW DATABASES;"`
+4. Recreate database: `mysql -u root -p < scripts/01_create_database.sql`
+
+</details>
+
+<details>
+<summary><b>❌ Rate Limit Issues</b></summary>
+
+**Error:**
 \`\`\`
 Daily API request limit exceeded
 \`\`\`
-**Solution**: Wait for daily reset or increase `MAX_DAILY_REQUESTS` in `.env`
 
-### Debug Commands:
+**Solutions:**
+1. Wait for daily reset (midnight UTC)
+2. Increase `MAX_DAILY_REQUESTS` in `.env` file
+3. Use API settings menu in application
+4. Consider upgrading to paid tier
+
+</details>
+
+### Debug Commands
+
 \`\`\`bash
-# View detailed logs
+# View application logs
 tail -f google_search_app.log
+
+# View scheduler logs  
 tail -f scheduler.log
 
 # Check MySQL connection
 mysql -u root -p google_search_app
+
+# Test API connectivity
+curl "https://www.googleapis.com/customsearch/v1?key=YOUR_API_KEY&cx=YOUR_ENGINE_ID&q=test"
 \`\`\`
+
+---
 
 ## 📁 Project Structure
 
 \`\`\`
 google-search-api-app/
-├── scripts/
-│   ├── 01_create_database.sql      # Database schema
-│   ├── config.py                   # Configuration management
-│   ├── database.py                 # Database operations
-│   ├── google_search_api.py        # API client
-│   ├── scheduler.py                # Main application (all-in-one)
-│   └── setup.py                    # Complete setup and validation tool
-├── .env                            # Environment variables (created by setup)
-├── .gitignore                      # Git ignore rules
-├── README.md                       # This file
-├── google_search_app.log           # Application logs
-└── scheduler.log                   # Scheduler logs
+├── 📁 scripts/
+│   ├── 📄 01_create_database.sql      # Database schema
+│   ├── 📄 config.py                   # Configuration management
+│   ├── 📄 database.py                 # Database operations
+│   ├── 📄 google_search_api.py        # API client
+│   ├── 📄 scheduler.py                # Main application
+│   └── 📄 setup.py                    # Setup and validation
+├── 📄 .env                            # Environment variables
+├── 📄 .gitignore                      # Git ignore rules
+├── 📄 README.md                       # This documentation
+├── 📄 LICENSE                         # MIT License
+├── 📄 google_search_app.log           # Application logs
+└── 📄 scheduler.log                   # Scheduler logs
 \`\`\`
 
-## ⚙️ Configuration Options
-
-### Environment Variables (.env):
-- `GOOGLE_API_KEY`: Your Google Custom Search API key
-- `GOOGLE_SEARCH_ENGINE_ID`: Your Custom Search Engine ID
-- `DB_HOST`: MySQL host (default: localhost)
-- `DB_PORT`: MySQL port (default: 3306)
-- `DB_USER`: MySQL username (default: root)
-- `DB_PASSWORD`: MySQL password
-- `DB_NAME`: Database name (default: google_search_app)
-- `MAX_DAILY_REQUESTS`: Daily API limit (default: 50)
-- `DEFAULT_RESULTS_PER_QUERY`: Default results per search (default: 10)
-- `LOG_LEVEL`: Logging level (default: INFO)
-- `LOG_FILE`: Log file name (default: google_search_app.log)
-
-### Runtime Configuration:
-- **API Settings**: Modify daily limits and defaults through the application menu
-- **Keywords**: Change default keywords or load from files
-- **Schedule**: Configure frequency, duration, and results per keyword
-
-## 🔒 Security Best Practices
-
-### Environment Variables:
-- Never commit `.env` files to version control
-- Use strong MySQL passwords
-- Restrict API key permissions in Google Cloud
-
-### Database Security:
-- Use dedicated database user with limited permissions
-- Enable MySQL SSL if accessing remotely
-- Regular database backups
+---
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+We welcome contributions! Here's how you can help:
+
+### Getting Started
+
+1. **Fork the repository**
+   \`\`\`bash
+   git fork https://github.com/yourusername/google-search-api-app.git
+   \`\`\`
+
+2. **Create a feature branch**
+   \`\`\`bash
+   git checkout -b feature/amazing-feature
+   \`\`\`
+
+3. **Make your changes**
+   - Follow the existing code style
+   - Add tests for new functionality
+   - Update documentation as needed
+
+4. **Test your changes**
+   \`\`\`bash
+   python scripts/setup.py --test
+   \`\`\`
+
+5. **Commit and push**
+   \`\`\`bash
+   git commit -m 'Add amazing feature'
+   git push origin feature/amazing-feature
+   \`\`\`
+
+6. **Open a Pull Request**
+
+### Development Guidelines
+
+<details>
+<summary><b>📋 Code Standards</b></summary>
+
+- **Python Style**: Follow PEP 8 guidelines
+- **Documentation**: Add docstrings for all functions
+- **Testing**: Include unit tests for new features
+- **Logging**: Use appropriate log levels
+- **Error Handling**: Implement comprehensive error handling
+
+</details>
+
+### Areas for Contribution
+
+- 🐛 **Bug Fixes** - Help identify and fix issues
+- ✨ **New Features** - Add functionality and improvements
+- 📚 **Documentation** - Improve guides and examples
+- 🧪 **Testing** - Expand test coverage
+- 🎨 **UI/UX** - Enhance user interface and experience
+
+---
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🆘 Support
+\`\`\`
+MIT License
 
-If you encounter any issues or have questions:
+Copyright (c) 2024 Google Search API Application
 
-1. Check the [Troubleshooting](#-troubleshooting) section
-2. Run `python scripts/setup.py --check` for diagnosis
-3. Review the logs (`google_search_app.log`, `scheduler.log`)
-4. Open an issue on GitHub with detailed error information
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-## 🔗 Useful Links
-
-- [Google Custom Search API Documentation](https://developers.google.com/custom-search/v1/overview)
-- [Google Cloud Console](https://console.cloud.google.com/)
-- [Google Custom Search Engine Setup](https://cse.google.com/)
-- [MySQL Documentation](https://dev.mysql.com/doc/)
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+\`\`\`
 
 ---
 
-**Happy Searching!** 🔍✨
+## 🆘 Support
+
+### Getting Help
+
+- 📖 **Documentation**: Check this README and inline code comments
+- 🐛 **Issues**: [Open an issue](https://github.com/yourusername/google-search-api-app/issues) for bugs or feature requests
+- 💬 **Discussions**: [Join discussions](https://github.com/yourusername/google-search-api-app/discussions) for questions and ideas
+- 📧 **Email**: Contact the maintainers directly
+
+### Diagnostic Tools
+
+\`\`\`bash
+# Quick health check
+python scripts/setup.py --check
+
+# Comprehensive validation
+python scripts/setup.py --validate
+
+# Run all tests
+python scripts/setup.py --test
+\`\`\`
+
+---
+
+## 🔗 Useful Links
+
+| Resource | Description | Link |
+|----------|-------------|------|
+| **Google Custom Search API** | Official API documentation | [📖 Docs](https://developers.google.com/custom-search/v1/overview) |
+| **Google Cloud Console** | Manage API keys and projects | [🔧 Console](https://console.cloud.google.com/) |
+| **Custom Search Engine** | Create and manage search engines | [⚙️ Setup](https://cse.google.com/) |
+| **MySQL Documentation** | Database setup and management | [📚 MySQL Docs](https://dev.mysql.com/doc/) |
+| **Python.org** | Python installation and guides | [🐍 Python](https://www.python.org/) |
+
+---
+
+<div align="center">
+
+### ⭐ Star this repository if you find it helpful!
+
+**Made with ❤️ by the community**
+
+[⬆️ Back to Top](#-google-search-api-application)
+
+</div>
